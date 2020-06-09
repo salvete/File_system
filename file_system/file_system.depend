@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1591673103 source:e:\workplace\mygit_hub\file_system\file_system\main.c
+	<stdio.h>
+	<stdlib.h>
+	<sys/fcntl.h>
+	<fcntl.h>
+	<string.h>
+
