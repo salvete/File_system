@@ -41,6 +41,9 @@ struct dinode{
 #define BPB (BSIZE*8)
 //第b个块所在的bmap距离bmapstart的块数
 #define BBLOCK(b,sb) (b/BPB + sb.bmapstart)
+//第b个数据块的磁盘块号
+#define DATANUM(b,sb) (b + (sb.bmapstart) + NDBITMAP)
+
 //dinode所占的块数
 #define NDSKINODE 5
 
@@ -52,5 +55,6 @@ struct dirent{
     ushort inum;
     char name[DIRSIZE];
 };
+
 
 #endif // FS_H_INCLUDED

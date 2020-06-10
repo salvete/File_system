@@ -26,6 +26,38 @@ void mkfs()
     memmove(&tmp,bp->data,sizeof(tmp));
     bwrite(bp);
     brelse(bp);
+
+    //将dinode清空
+    int i;
+    for (i=2; i<2+NDSKINODE; i++)
+    {
+        bp = bread(i);
+        memset(bp->data,0,BSIZE);
+        bwrite(bp);
+        brelse(bp);
+    }
+
+
+    //将bitmap从重新清空
+    for (i = tmp.bmapstart; i<tmp.bmapstart+NDBITMAP; i++)
+    {
+        bp = bread(i);
+        memset(bp->data,0,BSIZE);
+        bwrite(bp);
+        brelse(bp);
+    }
+
+    //将17块前面标记为占用
+    bp = bread(tmp.bmapstart);
+    int m;
+    for (i =0; i<1+1+NDSKINODE+NDBITMAP; i++)
+    {
+        m = 1 <<(i%8);
+        bp->data[i/8] |= m;
+    }
+
+    bwrite(bp);
+    brelse(bp);
 }
 
 
@@ -65,8 +97,9 @@ static uint balloc()
                 bp->data[bi/8] |= m;
                 bwrite(bp);
                 brelse(bp);
-                b_zero(b+bi);
-                return b+bi;
+                b_zero(bi+b);
+                printf("num:%d\n",bi+b);
+                return b + bi;
             }
 
          brelse(bp);
@@ -204,7 +237,7 @@ void iput(struct inode *ip)
 }
 
 //Inode content
-static uint bmap(struct inode *ip, uint bn)
+ uint bmap(struct inode *ip, uint bn)
 {
     uint addr,*a;
     struct buf *bp;
@@ -231,6 +264,7 @@ static uint bmap(struct inode *ip, uint bn)
             bwrite(bp);
         }
         brelse(bp);
+        printf("addr:%d\n",addr);
         return addr;
 
     }
@@ -325,6 +359,8 @@ int writei(struct inode *ip, char *src, uint off, int n)
         ip->size = off;
         iupdate(ip);
     }
+
+
 
     return n;
 }

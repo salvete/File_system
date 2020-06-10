@@ -66,8 +66,8 @@ struct buf *bread(uint blockno)
     int offset = blockno*BSIZE;
     int fd = open("disk.vhd",O_RDONLY);
     assert(fd != -1);
-    assert(lseek(fd,offset,SEEK_SET) == offset);
-    assert(read(fd,b->data,BSIZE) == BSIZE);
+    assert(lseek(fd,offset,SEEK_SET) != -1);
+    assert(read(fd,b->data,BSIZE) != -1);
     close(fd);
     return b;
 };
