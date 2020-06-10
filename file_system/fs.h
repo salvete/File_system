@@ -4,7 +4,7 @@
 #include"types.h"
 
 
-#define ROOTINO 1
+#define ROOTINO 0
 #define BSIZE 512
 
 

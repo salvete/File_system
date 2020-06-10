@@ -81,7 +81,6 @@ int file_write(struct file *f, char *addr, int n)
 
         if ((r=writei(f->ip,addr+i,f->off,n1)) > 0)
             f->off += r;
-        printf("r:%d,n1:%d\n",r,n1);
         if (r < 0)
             break;
         assert(r == n1);

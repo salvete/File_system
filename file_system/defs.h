@@ -14,6 +14,7 @@ void icache_init();
 struct inode* ialloc(short);
 void iupdate(struct inode*);
 struct inode* idup(struct inode*);
+
 void iput(struct inode *);
 void stati(struct inode*, struct stat *st);
 int readi(struct inode*, char *, uint, uint);

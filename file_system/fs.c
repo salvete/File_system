@@ -11,6 +11,8 @@
 
 struct superblock sb;
 
+static struct inode* iget(uint inum);
+
 void mkfs()
 {
     struct superblock tmp;
@@ -56,7 +58,18 @@ void mkfs()
         m = 1 <<(i%8);
         bp->data[i/8] |= m;
     }
+    bwrite(bp);
+    brelse(bp);
 
+    //将inode的第一块设置为/目录
+    bp = bread(IBLOCK(ROOTINO,tmp));
+    struct dinode *dip;
+    dip = (struct dinode*)bp->data + ROOTINO%IPB;
+    dip->type = T_DIR;
+    dip->nlink = 0;
+    dip->size = 0;
+    for (i=0; i<NDIRECT + 1; i++)
+        dip->addrs[i] = 0;
     bwrite(bp);
     brelse(bp);
 }
@@ -140,8 +153,6 @@ void icache_init()
            );
 }
 
-static struct inode* iget(uint inum);
-
 
 struct inode* ialloc(short type)
 {
@@ -151,8 +162,11 @@ struct inode* ialloc(short type)
     struct inode *x;
     for (inum = 1; inum < sb.ninodes; inum++)
     {
+
         bp = bread(IBLOCK(inum,sb));
         dip = (struct dinode*)bp->data + inum%IPB;
+
+
         if (dip->type == 0)
         {
             memset(dip,0,sizeof(*dip));
@@ -206,9 +220,19 @@ static struct inode* iget(uint inum)
         assert(0);
     }
 
+    struct buf *bp;
+    struct dinode *dip;
     ip = empty;
     ip->inum = inum;
     ip->ref = 1;
+
+    bp = bread(IBLOCK(inum,sb));
+    dip = (struct dinode*)bp->data + inum % IPB;
+    ip->type = dip->type;
+    ip->nlink = dip->nlink;
+    ip->size = dip->size;
+    memmove(ip->addrs,dip->addrs,sizeof(dip->addrs));
+    brelse(bp);
 
     return ip;
 }
@@ -345,7 +369,6 @@ int writei(struct inode *ip, char *src, uint off, uint n)
 
     if (off + n > MAXFILE * BSIZE)
         return -1;
-    printf("n:%d\n",n);
 
     for (tot=0; tot<n; tot+=m, off+=m, src+=m)
     {
@@ -470,11 +493,19 @@ static char *skipelem(char *path, char*name)
     return path;
 }
 
+struct inode *get_current()
+{
+    return iget(ROOTINO);
+}
+
 static struct inode *namex(char *path, int nameiparent, char *name)
 {
     struct inode  *ip,*next;
 
-    ip = iget(ROOTINO);
+    if (*path == '/')
+        ip = iget(ROOTINO);
+    else
+        ip = get_current();
 
     while ((path = skipelem(path,name)) != 0)
     {

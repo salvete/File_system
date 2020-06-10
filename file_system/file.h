@@ -8,7 +8,6 @@
 #define MAXOPBLOCKS 10
 
 
-
 struct file
 {
     enum{FD_NONE,FD_PIPE,FD_INODE } type;
