@@ -1,7 +1,13 @@
 #ifndef FILE_H_INCLUDED
 #define FILE_H_INCLUDED
 
+#include"fs.h"
+
 #define NINODE 50
+#define NFILE 100
+#define MAXOPBLOCKS 10
+
+
 
 struct file
 {
@@ -11,6 +17,7 @@ struct file
     char writeable;
     struct inode *ip;
     uint off;
+    uint off_r;
 };
 
 struct inode{

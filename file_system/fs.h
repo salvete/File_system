@@ -6,8 +6,7 @@
 
 #define ROOTINO 1
 #define BSIZE 512
-//文件系统大小，以块计
-#define FSSIZE 10000
+
 
 struct superblock{
     //共有多少块
@@ -41,14 +40,13 @@ struct dinode{
 #define BPB (BSIZE*8)
 //第b个块所在的bmap距离bmapstart的块数
 #define BBLOCK(b,sb) (b/BPB + sb.bmapstart)
-//第b个数据块的磁盘块号
-#define DATANUM(b,sb) (b + (sb.bmapstart) + NDBITMAP)
+
 
 //dinode所占的块数
 #define NDSKINODE 5
-
+//bitmap所占用块数
 #define NDBITMAP 10
-
+//目录名字长度
 #define DIRSIZE 20
 
 struct dirent{

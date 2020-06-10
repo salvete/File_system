@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1591758602 source:e:\workplace\mygit_hub\file_system\file_system\main.c
+1591777135 source:e:\workplace\mygit_hub\file_system\file_system\main.c
 	"buf.h"
 	"fs.h"
 	<stdio.h>
 	"fs.h"
 	"stat.h"
 	"file.h"
+	"defs.h"
 
 1591754145 source:e:\workplace\mygit_hub\file_system\file_system\bio.c
 	"buf.h"
@@ -16,17 +17,17 @@
 	<fcntl.h>
 	<stdio.h>
 
-1591687110 e:\workplace\mygit_hub\file_system\file_system\buf.h
+1591777257 e:\workplace\mygit_hub\file_system\file_system\buf.h
 	"types.h"
 	"fs.h"
 
 1591693090 e:\workplace\mygit_hub\file_system\file_system\types.h
 	<assert.h>
 
-1591758675 e:\workplace\mygit_hub\file_system\file_system\fs.h
+1591771672 e:\workplace\mygit_hub\file_system\file_system\fs.h
 	"types.h"
 
-1591758602 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
+1591776466 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
 	"types.h"
 	"fs.h"
 	"buf.h"
@@ -34,9 +35,20 @@
 	<stdio.h>
 	<string.h>
 	"stat.h"
+	"defs.h"
 
-1591695734 e:\workplace\mygit_hub\file_system\file_system\file.h
+1591776989 e:\workplace\mygit_hub\file_system\file_system\file.h
+	"fs.h"
 
 1591712300 e:\workplace\mygit_hub\file_system\file_system\stat.h
 	"types.h"
+
+1591773580 e:\workplace\mygit_hub\file_system\file_system\defs.h
+
+1591776989 source:e:\workplace\mygit_hub\file_system\file_system\file.c
+	"types.h"
+	"file.h"
+	"stat.h"
+	"fs.h"
+	"defs.h"
 

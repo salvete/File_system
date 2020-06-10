@@ -5,6 +5,7 @@
 #include<stdio.h>
 #include<string.h>
 #include"stat.h"
+#include"defs.h"
 
 #define min(a,b) ( (a) < (b)? (a):(b))
 
@@ -70,7 +71,7 @@ void readsb(struct superblock *sb)
     brelse(bp);
 }
 
-static void b_zero(int bno)
+static void b_zero(uint bno)
 {
     struct buf *bp;
     bp = bread(bno);
@@ -98,7 +99,6 @@ static uint balloc()
                 bwrite(bp);
                 brelse(bp);
                 b_zero(bi+b);
-                printf("num:%d\n",bi+b);
                 return b + bi;
             }
 
@@ -148,7 +148,7 @@ struct inode* ialloc(short type)
     int inum;
     struct buf *bp;
     struct dinode *dip;
-
+    struct inode *x;
     for (inum = 1; inum < sb.ninodes; inum++)
     {
         bp = bread(IBLOCK(inum,sb));
@@ -159,7 +159,9 @@ struct inode* ialloc(short type)
             dip->type = type;
             bwrite(bp);
             brelse(bp);
-            return iget(inum);
+            x = iget(inum);
+            x->type = type;
+            return x;
         }
     }
 
@@ -237,7 +239,7 @@ void iput(struct inode *ip)
 }
 
 //Inode content
- uint bmap(struct inode *ip, uint bn)
+static uint bmap(struct inode *ip, uint bn)
 {
     uint addr,*a;
     struct buf *bp;
@@ -264,7 +266,6 @@ void iput(struct inode *ip)
             bwrite(bp);
         }
         brelse(bp);
-        printf("addr:%d\n",addr);
         return addr;
 
     }
@@ -335,16 +336,17 @@ int readi(struct inode *ip, char *dst, uint off, uint n)
     return n;
 }
 
-int writei(struct inode *ip, char *src, uint off, int n)
+int writei(struct inode *ip, char *src, uint off, uint n)
 {
-
     uint tot,m;
     struct buf *bp;
-
     if (off > ip->size || off + n < off)
         return -1;
+
     if (off + n > MAXFILE * BSIZE)
         return -1;
+    printf("n:%d\n",n);
+
     for (tot=0; tot<n; tot+=m, off+=m, src+=m)
     {
         bp = bread(bmap(ip,off/BSIZE));
@@ -354,14 +356,13 @@ int writei(struct inode *ip, char *src, uint off, int n)
         brelse(bp);
     }
 
+
+
     if (n > 0 && off > ip->size)
     {
         ip->size = off;
         iupdate(ip);
     }
-
-
-
     return n;
 }
 
@@ -444,7 +445,7 @@ int dirlink(struct inode *dp, char *name, uint inum)
 ///////////////////////////
 //paths
 
- static char *skipelem(char *path, char*name)
+static char *skipelem(char *path, char*name)
 {
     char *s;
     int len;
