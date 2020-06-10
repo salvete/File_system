@@ -1,8 +1,40 @@
 # depslib dependency file v1.0
-1591673103 source:e:\workplace\mygit_hub\file_system\file_system\main.c
+1591750754 source:e:\workplace\mygit_hub\file_system\file_system\main.c
+	"buf.h"
+	"fs.h"
 	<stdio.h>
-	<stdlib.h>
-	<sys/fcntl.h>
+	"fs.h"
+
+1591698845 source:e:\workplace\mygit_hub\file_system\file_system\bio.c
+	"buf.h"
+	"fs.h"
+	"types.h"
+	<assert.h>
+	<unistd.h>
 	<fcntl.h>
+	<stdio.h>
+
+1591687110 e:\workplace\mygit_hub\file_system\file_system\buf.h
+	"types.h"
+	"fs.h"
+
+1591693090 e:\workplace\mygit_hub\file_system\file_system\types.h
+	<assert.h>
+
+1591750153 e:\workplace\mygit_hub\file_system\file_system\fs.h
+	"types.h"
+
+1591750907 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
+	"types.h"
+	"fs.h"
+	"buf.h"
+	"file.h"
+	<stdio.h>
 	<string.h>
+	"stat.h"
+
+1591695734 e:\workplace\mygit_hub\file_system\file_system\file.h
+
+1591712300 e:\workplace\mygit_hub\file_system\file_system\stat.h
+	"types.h"
 
