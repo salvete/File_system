@@ -55,6 +55,8 @@ int file_read(struct file *f, char *addr, int n)
     int r=-1;
     if (f->readable == 0)
         return -1;
+
+
     assert(f->type = FD_INODE);
     if ((r = readi(f->ip,addr,f->off_r,n)) > 0)
         f->off_r += r;

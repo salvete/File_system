@@ -10,28 +10,31 @@
 int main()
 {
     init_cache();
-    //mkfs();
+    mkfs();
     icache_init();
+    init_ofile();
+    int fd;
 
-//    struct inode *p,*q,*m,*t;
-//    p = iget(ROOTINO);
-//    char b[10]={"axxxxxxx\n"};
-//    char c[10];
-//    q = ialloc(T_DIR);
-//    m = ialloc(T_FILE);
-//    assert(writei(m,b,0,10) == 10);
-//    assert(dirlink(p,"b",q->inum) == 0);
-//    assert(dirlink(q,"test.txt",m->inum) == 0);
-//    t = namei("/b/test.txt");
-//    assert(readi(t,c,0,10) == 10);
-//    printf("res:%s\n",c);
-//    printf("%d,%d\n",t->inum,m->inum);
+    assert(sys_mkdir("/dir1/") == 0);
+    assert(sys_mkdir("/dir2/") == 0);
+    assert(sys_mkdir("/dir3/") == 0);
+    assert((fd =sys_open("/dir1/dir1.txt",OP_C)) > 2);
+    assert(sys_link("/dir1_link","/dir1/dir1.txt") == 0);
+    assert(sys_close(get_file_by_fd(fd)) == 0);
 
-    struct inode *t;
-    char c[10];
-    t = namei("/b/test.txt");
-    assert(readi(t,c,0,10) == 10);
-    printf("res:%s\n",c);
+    struct file *f;
+    char info[50] = {"This is just for testing...\n"};
+    char res[50];
 
+    assert((fd =sys_open("/dir1/dir1.txt",OP_W)) > 2);
+    assert(sys_write(get_file_by_fd(fd),info,50) == 50);
+    assert(sys_close(get_file_by_fd(fd)) == 0);
+
+    assert((fd =sys_open("/dir1/dir1.txt",OP_R)) > 2);
+    f = get_file_by_fd(fd);
+    assert(sys_read(f,res,50) != -1);
+    assert(sys_close(f) == 0);
+
+    printf("res:%s\n",res);
     return 0;
 }

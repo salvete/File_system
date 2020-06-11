@@ -16,7 +16,7 @@ void iupdate(struct inode*);
 struct inode* idup(struct inode*);
 
 void iput(struct inode *);
-void stati(struct inode*, struct stat *st);
+void stati(struct inode*, struct stat *);
 int readi(struct inode*, char *, uint, uint);
 int writei(struct inode*, char*, uint,uint);
 int namecmp(const char*, const char*);
@@ -35,4 +35,16 @@ int file_write(struct file*, char *, int);
 struct file *new_file(short);
 
 
+//sysfile.c
+void init_ofile();
+int sys_dup(struct file*);
+int sys_read(struct file *f, char *dst, int n);
+int sys_write(struct file *f, char *src, int n);
+int sys_close(struct file *f);
+int sys_fstat(struct file *f, struct stat *st);
+int sys_link(char *new_name, char *old);
+int sys_unlink(char *path);
+int sys_open(char *path, int o_mode);
+int sys_mkdir(char *path);
+struct file* get_file_by_fd(int fd);
 #endif // DEFS_H_INCLUDED

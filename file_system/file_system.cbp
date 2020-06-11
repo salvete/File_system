@@ -45,10 +45,14 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="fs.h" />
+		<Unit filename="headers.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="stat.h" />
+		<Unit filename="sysfile.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="types.h" />
 		<Extensions>
 			<code_completion />
