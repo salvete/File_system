@@ -1,10 +1,5 @@
-#include"buf.h"
-#include"fs.h"
+#include"headers.h"
 #include<stdio.h>
-#include"fs.h"
-#include"stat.h"
-#include"file.h"
-#include"defs.h"
 
 
 int main()
@@ -13,6 +8,8 @@ int main()
     mkfs();
     icache_init();
     init_ofile();
+    init_global();
+
     int fd;
 
     assert(sys_mkdir("/dir1/") == 0);
@@ -35,6 +32,12 @@ int main()
     assert(sys_read(f,res,50) != -1);
     assert(sys_close(f) == 0);
 
-    printf("res:%s\n",res);
+    //查看目录内容
+    printf("根目录 / 内容为：\n");
+    ls(cur_inode);
+    printf("\n目录 /dir1 内容为：\n");
+    f = get_file_by_fd(sys_open("/dir1",OP_R));
+    ls(f->ip);
+
     return 0;
 }

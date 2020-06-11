@@ -1,11 +1,7 @@
-#include"types.h"
-#include"fs.h"
-#include"buf.h"
-#include"file.h"
+#include"headers.h"
 #include<stdio.h>
 #include<string.h>
-#include"stat.h"
-#include"defs.h"
+
 
 #define min(a,b) ( (a) < (b)? (a):(b))
 
@@ -74,6 +70,10 @@ void mkfs()
     brelse(bp);
 }
 
+void init_global()
+{
+    cur_inode = iget(ROOTINO);
+}
 
 void readsb(struct superblock *sb)
 {
@@ -148,9 +148,6 @@ struct{
 void icache_init()
 {
     readsb(&sb);
-    printf("sb: size %d nblocks %d ninodes %d inodestart %d bmap start %d\n",\
-           sb.size,sb.nblocks,sb.ninodes,sb.inodestart,sb.bmapstart\
-           );
 }
 
 

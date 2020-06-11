@@ -9,6 +9,7 @@ void brelse(struct buf *);
 
 //fs.c
 void mkfs();
+void init_global();
 void readsb(struct superblock *);
 void icache_init();
 struct inode* ialloc(short);
@@ -47,4 +48,9 @@ int sys_unlink(char *path);
 int sys_open(char *path, int o_mode);
 int sys_mkdir(char *path);
 struct file* get_file_by_fd(int fd);
+
+
+//ls.c
+void ls(struct inode*);
+
 #endif // DEFS_H_INCLUDED

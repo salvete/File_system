@@ -6,6 +6,7 @@
 #include"fs.h"
 #include"stat.h"
 #include"types.h"
+#include"global.h"
 #include"defs.h"
 
 #endif // HEADERS_H_INCLUDED

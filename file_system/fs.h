@@ -54,5 +54,4 @@ struct dirent{
     char name[DIRSIZE];
 };
 
-
 #endif // FS_H_INCLUDED

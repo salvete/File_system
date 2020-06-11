@@ -24,6 +24,7 @@ struct file
     struct inode *ip;
     uint off;
     uint off_r;
+    uint uid;
 };
 
 struct inode{
