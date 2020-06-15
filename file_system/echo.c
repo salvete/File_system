@@ -20,6 +20,6 @@ int echo(char *info, char *path)
         return -1;
     }
 
-    close(get_file_by_fd(fd));
+    sys_close(get_file_by_fd(fd));
     return 0;
 }

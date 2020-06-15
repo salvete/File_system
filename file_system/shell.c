@@ -52,6 +52,25 @@ void shell()
             cat(res.Para[0]);
         else if(res.Order_Num == 7 && res.Len == 2)
             ln(res.Para[0],res.Para[1]);
+        else if (res.Order_Num == 8 && res.Len == 1)
+            del(res.Para[0]);
+        else if (res.Order_Num == 9 && res.Len == 1)
+            login(res.Para[0]);
+        else if (res.Order_Num == 10)
+            logout();
+        else if(res.Order_Num == 11)
+            whoami();
+        else if (res.Order_Num == 12)
+            system("cls");
+        else if (res.Order_Num == 13)
+        {
+            save_info();
+            break;
+        }
+        else if (res.Order_Num == 14)
+            save_info();
+        else if (res.Order_Num == 15)
+            format();
         else
             continue;
 

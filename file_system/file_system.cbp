@@ -42,6 +42,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="defs.h" />
+		<Unit filename="del.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="disk.vhd" />
 		<Unit filename="echo.c">
 			<Option compilerVar="CC" />
@@ -60,6 +63,9 @@
 		<Unit filename="global.h" />
 		<Unit filename="headers.h" />
 		<Unit filename="ln.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="login.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="ls.c">

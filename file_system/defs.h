@@ -8,14 +8,18 @@ void bwrite(struct buf*);
 void brelse(struct buf *);
 
 //fs.c
+void detect();
+void init_with_clean();
+void init_without_clean();
 void mkfs();
 void init_global();
+void set_cur_name(char *);
 void readsb(struct superblock *);
 void icache_init();
 struct inode* ialloc(short);
 void iupdate(struct inode*);
+void save_info();
 struct inode* idup(struct inode*);
-
 void iput(struct inode *);
 void stati(struct inode*, struct stat *);
 int readi(struct inode*, char *, uint, uint);
@@ -70,6 +74,23 @@ int cat(char *path);
 
 //ln.c
 int ln(char *from, char *to);
+
+//del.c
+int del(char *path);
+
+//login.c
+int login(char *name);
+int logout();
+int whoami();
+
+//orders.c
+void Read_TXT();
+
+//format.c
+int format();
+
+//shell.c
+void shell();
 
 
 #endif // DEFS_H_INCLUDED

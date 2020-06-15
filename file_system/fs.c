@@ -14,6 +14,7 @@ static char x[100] = {"Default"};
 void mkfs()
 {
     struct superblock tmp;
+    tmp.magic = MAGIC;
     tmp.size = 1+NDSKINODE+NDBITMAP+ NDBITMAP * BPB;
     tmp.nblocks = NDBITMAP * BPB;
     tmp.ninodes = NDSKINODE * IPB;
@@ -72,15 +73,76 @@ void mkfs()
     brelse(bp);
 }
 
+void detect()
+{
+    init_cache();
+    readsb(&sb);
+    if (sb.magic == MAGIC)
+    {
+        printf("磁盘上已经存在文件系统，是否格式化?[y/n]\n");
+        char c;
+        while (scanf("%c",&c) && !(c == 'y' || c == 'Y' || c == 'N' || c == 'n'))
+        {
+            printf("输入不符合要求，请重新输入\n");
+        }
+        if (c == 'Y' || c == 'y')
+        {
+            init_with_clean();
+            getchar();
+        }
+        else
+        {
+            init_without_clean();
+            getchar();
+        }
+    }
+    else
+        init_with_clean();
+}
+
 void init_global()
 {
+    init_cache();
+    icache_init();
+    init_ofile();
+
     cur_inode = iget(ROOTINO);
-    assert(dirlink(cur_inode,".",ROOTINO) >= 0);
-    assert(dirlink(cur_inode,"..",ROOTINO) >= 0);
+    assert(dirlink(cur_inode,".",ROOTINO) != -1);
+    assert(dirlink(cur_inode,"..",ROOTINO) != -1);
     cur_inode->nlink ++;
     iupdate(cur_inode);
-
     cur_name = x;
+
+}
+
+void init_with_clean()
+{
+    init_cache();
+    mkfs();
+    icache_init();
+    init_ofile();
+
+    cur_inode = iget(ROOTINO);
+    assert(dirlink(cur_inode,".",ROOTINO) != -1);
+    assert(dirlink(cur_inode,"..",ROOTINO) != -1);
+    cur_inode->nlink ++;
+    iupdate(cur_inode);
+    cur_name = x;
+}
+
+void init_without_clean()
+{
+    init_cache();
+    icache_init();
+    init_ofile();
+    cur_inode = iget(ROOTINO);
+    cur_name = x;
+}
+
+
+void set_cur_name(char *a)
+{
+    memmove(x,a,sizeof(x));
 }
 
 void readsb(struct superblock *sb)
@@ -240,6 +302,17 @@ static struct inode* iget(uint inum)
     brelse(bp);
 
     return ip;
+}
+
+void save_info()
+{
+    struct inode *ip;
+    for (ip=&icache.inode[0]; ip < &icache.inode[NINODE]; ip++)
+    {
+        if (ip->ref)
+            iupdate(ip);
+    }
+
 }
 
 struct inode* idup(struct inode *ip)

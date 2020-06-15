@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1592191219 source:e:\workplace\mygit_hub\file_system\file_system\main.c
+1592213883 source:e:\workplace\mygit_hub\file_system\file_system\main.c
 	"headers.h"
 	<stdio.h>
 
@@ -19,10 +19,10 @@
 1591693090 e:\workplace\mygit_hub\file_system\file_system\types.h
 	<assert.h>
 
-1591860570 e:\workplace\mygit_hub\file_system\file_system\fs.h
+1592211768 e:\workplace\mygit_hub\file_system\file_system\fs.h
 	"types.h"
 
-1592200451 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
+1592214098 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
 	"headers.h"
 	<stdio.h>
 	<string.h>
@@ -33,7 +33,7 @@
 1591712300 e:\workplace\mygit_hub\file_system\file_system\stat.h
 	"types.h"
 
-1592207022 e:\workplace\mygit_hub\file_system\file_system\defs.h
+1592213776 e:\workplace\mygit_hub\file_system\file_system\defs.h
 
 1591858462 source:e:\workplace\mygit_hub\file_system\file_system\file.c
 	"types.h"
@@ -42,7 +42,7 @@
 	"fs.h"
 	"defs.h"
 
-1592201282 source:e:\workplace\mygit_hub\file_system\file_system\sysfile.c
+1592209291 source:e:\workplace\mygit_hub\file_system\file_system\sysfile.c
 	"headers.h"
 	<string.h>
 	<stdio.h>
@@ -62,7 +62,7 @@
 1592191669 e:\workplace\mygit_hub\file_system\file_system\global.h
 	"headers.h"
 
-1592202049 source:e:\workplace\mygit_hub\file_system\file_system\ls.c
+1592208198 source:e:\workplace\mygit_hub\file_system\file_system\ls.c
 	"headers.h"
 	<stdio.h>
 
@@ -75,11 +75,12 @@
 1592201282 source:e:\workplace\mygit_hub\file_system\file_system\mkdir.c
 	"headers.h"
 
-1592206951 source:e:\workplace\mygit_hub\file_system\file_system\shell.c
+1592213594 source:e:\workplace\mygit_hub\file_system\file_system\shell.c
 	"headers.h"
 	<stdio.h>
 
-1592192632 source:e:\workplace\mygit_hub\file_system\file_system\format.c
+1592213550 source:e:\workplace\mygit_hub\file_system\file_system\format.c
+	"headers.h"
 
 1592199336 source:e:\workplace\mygit_hub\file_system\file_system\orders.c
 	"headers.h"
@@ -87,12 +88,18 @@
 
 1592199295 e:\workplace\mygit_hub\file_system\file_system\orders.h
 
-1592204104 source:e:\workplace\mygit_hub\file_system\file_system\echo.c
+1592211504 source:e:\workplace\mygit_hub\file_system\file_system\echo.c
 	"headers.h"
 
 1592205114 source:e:\workplace\mygit_hub\file_system\file_system\cat.c
 	"headers.h"
 
 1592206951 source:e:\workplace\mygit_hub\file_system\file_system\ln.c
+	"headers.h"
+
+1592208489 source:e:\workplace\mygit_hub\file_system\file_system\del.c
+	"headers.h"
+
+1592211260 source:e:\workplace\mygit_hub\file_system\file_system\login.c
 	"headers.h"
 

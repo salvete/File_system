@@ -14,14 +14,18 @@ int ls(struct inode *cur_inode)
         if (readi(cur_inode,(char*)&de,off,sizeof(de)) != sizeof(de))
             return -1;
 
-        ip = dirlookup(cur_inode,de.name,0);
+        if (de.inum != 0)
+        {
 
-        if (ip->type == T_DIR)
-            printf("Directory     ");
-        else
-            printf("File          ");
+            ip = dirlookup(cur_inode,de.name,0);
 
-        printf("%s\n",de.name);
+            if (ip->type == T_DIR)
+                printf("Directory     ");
+            else
+                printf("File          ");
+
+            printf("%s\n",de.name);
+        }
     }
     return 0;
 }

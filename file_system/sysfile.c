@@ -78,6 +78,8 @@ int sys_link(char *new_name, char *old)
     assert(ip->type != T_DIR);
     ip->nlink ++;
 
+    iupdate(ip);
+
     if ((dp = nameiparent(new_name,name)) == 0)
     {
         undo(ip);
@@ -129,7 +131,7 @@ int sys_unlink(char *path)
     if((ip = dirlookup(dp,name,&off)) == 0)
         return -1;
 
-    assert(ip->nlink > 1);
+    assert(ip->nlink >= 1);
 
     if (ip->type == T_DIR && !is_dir_empty(ip))
         return -1;

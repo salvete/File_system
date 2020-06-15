@@ -7,8 +7,10 @@
 #define ROOTINO 1
 #define BSIZE 512
 
+#define MAGIC 65535
 
 struct superblock{
+    uint magic;
     //共有多少块
     uint size;
     //数据块的数量
