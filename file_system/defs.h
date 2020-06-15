@@ -51,6 +51,17 @@ struct file* get_file_by_fd(int fd);
 
 
 //ls.c
-void ls(struct inode*);
+int ls(struct inode*);
+
+//cd.c
+int cd(char *path);
+
+//mkdir.c
+int mkdir(char *path);
+
+//pwd.c
+int pwd(struct inode *now);
+
+
 
 #endif // DEFS_H_INCLUDED

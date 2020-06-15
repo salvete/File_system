@@ -35,12 +35,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="buf.h" />
+		<Unit filename="cd.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="defs.h" />
 		<Unit filename="disk.vhd" />
 		<Unit filename="file.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="file.h" />
+		<Unit filename="format.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="fs.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -53,11 +59,25 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mkdir.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="orders.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="orders.h" />
+		<Unit filename="pwd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="shell.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="stat.h" />
 		<Unit filename="sysfile.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="types.h" />
+		<Unit filename="命令及代号.txt" />
 		<Extensions>
 			<code_completion />
 			<envvars />

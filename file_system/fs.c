@@ -9,6 +9,8 @@ struct superblock sb;
 
 static struct inode* iget(uint inum);
 
+static char x[100] = {"Default"};
+
 void mkfs()
 {
     struct superblock tmp;
@@ -73,6 +75,12 @@ void mkfs()
 void init_global()
 {
     cur_inode = iget(ROOTINO);
+    assert(dirlink(cur_inode,".",ROOTINO) >= 0);
+    assert(dirlink(cur_inode,"..",ROOTINO) >= 0);
+    cur_inode->nlink ++;
+    iupdate(cur_inode);
+
+    cur_name = x;
 }
 
 void readsb(struct superblock *sb)
@@ -492,7 +500,7 @@ static char *skipelem(char *path, char*name)
 
 struct inode *get_current()
 {
-    return iget(ROOTINO);
+    return iget(cur_inode->inum);
 }
 
 static struct inode *namex(char *path, int nameiparent, char *name)
@@ -504,9 +512,9 @@ static struct inode *namex(char *path, int nameiparent, char *name)
     else
         ip = get_current();
 
+
     while ((path = skipelem(path,name)) != 0)
     {
-
         if (ip->type != T_DIR)
             return 0;
         if (nameiparent && *path == '\0')

@@ -4,5 +4,6 @@
 #include"headers.h"
 
 struct inode * cur_inode;
+char *cur_name;
 
 #endif // GLOBAL_H_INCLUDED

@@ -8,5 +8,8 @@
 #include"types.h"
 #include"global.h"
 #include"defs.h"
+#include"orders.h"
+#include<stdio.h>
+#include<string.h>
 
 #endif // HEADERS_H_INCLUDED

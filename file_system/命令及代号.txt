@@ -1,0 +1,16 @@
+1
+format
+2
+dir
+2
+ls
+3
+mkdir
+4
+cd
+5
+login
+6
+logout
+7
+delete

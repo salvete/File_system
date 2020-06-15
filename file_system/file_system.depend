@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1591866484 source:e:\workplace\mygit_hub\file_system\file_system\main.c
+1592191219 source:e:\workplace\mygit_hub\file_system\file_system\main.c
 	"headers.h"
 	<stdio.h>
 
@@ -22,7 +22,7 @@
 1591860570 e:\workplace\mygit_hub\file_system\file_system\fs.h
 	"types.h"
 
-1591866511 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
+1592191669 source:e:\workplace\mygit_hub\file_system\file_system\fs.c
 	"headers.h"
 	<stdio.h>
 	<string.h>
@@ -33,7 +33,7 @@
 1591712300 e:\workplace\mygit_hub\file_system\file_system\stat.h
 	"types.h"
 
-1591866199 e:\workplace\mygit_hub\file_system\file_system\defs.h
+1592192243 e:\workplace\mygit_hub\file_system\file_system\defs.h
 
 1591858462 source:e:\workplace\mygit_hub\file_system\file_system\file.c
 	"types.h"
@@ -47,7 +47,7 @@
 	<string.h>
 	<stdio.h>
 
-1591865649 e:\workplace\mygit_hub\file_system\file_system\headers.h
+1592198864 e:\workplace\mygit_hub\file_system\file_system\headers.h
 	"buf.h"
 	"file.h"
 	"fs.h"
@@ -55,11 +55,35 @@
 	"types.h"
 	"global.h"
 	"defs.h"
+	"orders.h"
+	<stdio.h>
+	<string.h>
 
-1591865820 e:\workplace\mygit_hub\file_system\file_system\global.h
+1592191669 e:\workplace\mygit_hub\file_system\file_system\global.h
 	"headers.h"
 
-1591865866 source:e:\workplace\mygit_hub\file_system\file_system\ls.c
+1592198880 source:e:\workplace\mygit_hub\file_system\file_system\ls.c
 	"headers.h"
 	<stdio.h>
+
+1592200212 source:e:\workplace\mygit_hub\file_system\file_system\pwd.c
+	"headers.h"
+
+1592188926 source:e:\workplace\mygit_hub\file_system\file_system\cd.c
+	"headers.h"
+
+1592200142 source:e:\workplace\mygit_hub\file_system\file_system\mkdir.c
+	"headers.h"
+
+1592200083 source:e:\workplace\mygit_hub\file_system\file_system\shell.c
+	"headers.h"
+	<stdio.h>
+
+1592192632 source:e:\workplace\mygit_hub\file_system\file_system\format.c
+
+1592199336 source:e:\workplace\mygit_hub\file_system\file_system\orders.c
+	"headers.h"
+	<stdlib.h>
+
+1592199295 e:\workplace\mygit_hub\file_system\file_system\orders.h
 
