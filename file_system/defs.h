@@ -46,7 +46,7 @@ int sys_fstat(struct file *f, struct stat *st);
 int sys_link(char *new_name, char *old);
 int sys_unlink(char *path);
 int sys_open(char *path, int o_mode);
-int sys_mkdir(char *path);
+int sys_mkdir(char *path,short type);
 struct file* get_file_by_fd(int fd);
 
 
@@ -57,7 +57,7 @@ int ls(struct inode*);
 int cd(char *path);
 
 //mkdir.c
-int mkdir(char *path);
+int mkdir(char *path,short type);
 
 //pwd.c
 int pwd(struct inode *now);

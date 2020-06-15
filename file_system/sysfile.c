@@ -233,10 +233,10 @@ int sys_open(char *path, int o_mode)
     return fd;
 }
 
-int sys_mkdir(char *path)
+int sys_mkdir(char *path,short type)
 {
     struct inode *ip;
-    if ((ip = create_dir_file(path,T_DIR)) == 0)
+    if ((ip = create_dir_file(path,type)) == 0)
         return -1;
     return 0;
 }
