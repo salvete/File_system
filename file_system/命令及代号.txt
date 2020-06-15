@@ -12,6 +12,8 @@ cd
 echo
 6
 cat
+7
+ln
 100
 login
 101

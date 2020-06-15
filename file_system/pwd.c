@@ -43,10 +43,6 @@ int pwd(struct inode *now)
     int off;
     int flag = 0;
 
-
-    int i;
-
-
     cur = get_root(now);
     while (len > 0)
     {

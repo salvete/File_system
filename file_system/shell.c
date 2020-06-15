@@ -50,6 +50,8 @@ void shell()
             #endif
         else if (res.Order_Num == 6 && res.Len == 1)
             cat(res.Para[0]);
+        else if(res.Order_Num == 7 && res.Len == 2)
+            ln(res.Para[0],res.Para[1]);
         else
             continue;
 

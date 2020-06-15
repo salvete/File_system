@@ -59,6 +59,9 @@
 		<Unit filename="fs.h" />
 		<Unit filename="global.h" />
 		<Unit filename="headers.h" />
+		<Unit filename="ln.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="ls.c">
 			<Option compilerVar="CC" />
 		</Unit>

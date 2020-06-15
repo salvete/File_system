@@ -62,6 +62,14 @@ int mkdir(char *path,short type);
 //pwd.c
 int pwd(struct inode *now);
 
+//echo.c
+int echo(char* info, char *path);
+
+//cat.c
+int cat(char *path);
+
+//ln.c
+int ln(char *from, char *to);
 
 
 #endif // DEFS_H_INCLUDED
