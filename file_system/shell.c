@@ -2,10 +2,22 @@
 #include<stdio.h>
 #define MAX_FUN 8
 
+//#define LARGE_INFO
+
 static struct orders res;
+#ifdef LARGE_INFO
+char large_info[10000];
+#endif // LARGE_INFO
 
 void shell()
 {
+    #ifdef LARGE_INFO
+    int i;
+    for ( i=0; i<9999; i++)
+        large_info[i]='x';
+    large_info[9999]='\0';
+    #endif // LARGE_INFO
+
     char input[100];
     Read_TXT();
     while (1)
@@ -30,6 +42,14 @@ void shell()
         }
         else if (res.Order_Num == 4)
             cd(res.Para[0]);
+        else if (res.Order_Num == 5 && res.Len == 2)
+            #ifdef LARGE_INFO
+            echo(large_info,res.Para[1]);
+            #else
+            echo(res.Para[0],res.Para[1]);
+            #endif
+        else if (res.Order_Num == 6 && res.Len == 1)
+            cat(res.Para[0]);
         else
             continue;
 

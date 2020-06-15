@@ -62,7 +62,7 @@
 1592191669 e:\workplace\mygit_hub\file_system\file_system\global.h
 	"headers.h"
 
-1592201796 source:e:\workplace\mygit_hub\file_system\file_system\ls.c
+1592202049 source:e:\workplace\mygit_hub\file_system\file_system\ls.c
 	"headers.h"
 	<stdio.h>
 
@@ -75,7 +75,7 @@
 1592201282 source:e:\workplace\mygit_hub\file_system\file_system\mkdir.c
 	"headers.h"
 
-1592201282 source:e:\workplace\mygit_hub\file_system\file_system\shell.c
+1592205040 source:e:\workplace\mygit_hub\file_system\file_system\shell.c
 	"headers.h"
 	<stdio.h>
 
@@ -86,4 +86,10 @@
 	<stdlib.h>
 
 1592199295 e:\workplace\mygit_hub\file_system\file_system\orders.h
+
+1592204104 source:e:\workplace\mygit_hub\file_system\file_system\echo.c
+	"headers.h"
+
+1592205114 source:e:\workplace\mygit_hub\file_system\file_system\cat.c
+	"headers.h"
 

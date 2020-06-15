@@ -9,8 +9,12 @@ mkdir
 4
 cd
 5
-login
+echo
 6
+cat
+100
+login
+101
 logout
-7
+102
 delete

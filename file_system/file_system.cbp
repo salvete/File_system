@@ -35,11 +35,17 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="buf.h" />
+		<Unit filename="cat.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="cd.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="defs.h" />
 		<Unit filename="disk.vhd" />
+		<Unit filename="echo.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="file.c">
 			<Option compilerVar="CC" />
 		</Unit>
